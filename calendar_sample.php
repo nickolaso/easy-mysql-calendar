@@ -7,7 +7,7 @@
 <body>
 <?
 //This is your Db connect file.  You need this for access	
-require('db_connect.php');
+require('htdocs/db_connect.php');
 //Here are the months
 $monthNames = Array("January", "February", "March", "April", "May", "June", "July", 
 "August", "September", "October", "November", "December");
