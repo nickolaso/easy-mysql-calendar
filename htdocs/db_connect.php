@@ -1,8 +1,9 @@
 <?php
-$con = mysql_connect("localhost","Database_Username","Database_password");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-mysql_select_db("Database_name", $con);
+define("HOST", "localhost"); // The host you want to connect to.
+define("USER", "Database_Username"); // The database username.
+define("PASSWORD", "Database_password"); // The database password. 
+define("DATABASE", "Database_name"); // The database name.
+ 
+$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
+// If you are connecting via TCP/IP rather than a UNIX socket remember to add the port number as a parameter.
 ?>
