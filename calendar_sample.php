@@ -7,7 +7,7 @@
 <body>
 <?
 //This is your Db connect file.  You need this for access	
-include 'htdocs/db_connect.php';
+require('db_connect.php');
 //Here are the months
 $monthNames = Array("January", "February", "March", "April", "May", "June", "July", 
 "August", "September", "October", "November", "December");
@@ -85,15 +85,19 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		$next_number=$number+1;
 		$next_date=$cYear."-".$cMonth."-".$next_number;
 		echo "<div id ='dateInfo' style='font-size:11px;'>";
-		$query = "SELECT * FROM event_table WHERE event_date = '$full_date'";
-		$result= mysql_query($query) or die(mysql_error());
-		while($row = mysql_fetch_array($result)){
-			$event_id=$row['event_id'];
-			$event_title=$row['event_title'];
+		$full_date=mysql_real_escape_string($full_date);//Use this if you are getting the date elsewhere
+	 	$q=$mysqli->query("SELECT * FROM event_table WHERE event_date = '$full_date'");
+		while($r=$q->fetch_assoc()) {
+			$event_id=$r['event_id'];
+			$event_title=$r['event_title'];
 			//You can use the event id above to code in a link if you want to make a page to view only that event.
 			//This is also where you could set an image variable to
 			echo $event_title."<br />";
-		}	
+		}
+	
+}
+		
+	
 		
 		
 		echo "</div>";
