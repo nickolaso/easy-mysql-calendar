@@ -85,7 +85,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		$next_number=$number+1;
 		$next_date=$cYear."-".$cMonth."-".$next_number;
 		echo "<div id ='dateInfo' style='font-size:11px;'>";
-		$full_date=mysql_real_escape_string($full_date);//Use this if you are getting the date elsewhere
+		$full_date=mysql_real_escape_string($full_date);//Use this if you are getting the date from somewhere shady.
 	 	$q=$mysqli->query("SELECT * FROM event_table WHERE event_date = '$full_date'");
 		while($r=$q->fetch_assoc()) {
 			$event_id=$r['event_id'];
